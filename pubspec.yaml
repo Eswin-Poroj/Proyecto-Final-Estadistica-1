@@ -18,8 +18,15 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.1
+  flutter_lints: ^5.0.0
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logos/logo.png"
+  adaptive_icon_background: "assets/logos/logo.png" # Fondo del ícono adaptativo
+  adaptive_icon_foreground: "assets/logos/logo.png"
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -35,6 +42,8 @@ flutter:
     - assets/logos/varianza.png
     - assets/logos/desviacionEstandar.png
     - assets/logos/github.png
+    - assets/logos/appstore.png
+    - assets/logos/logo.png
 
 
   # To add assets to your application, add an assets section, like this:

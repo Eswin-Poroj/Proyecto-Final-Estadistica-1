@@ -39,21 +39,67 @@ Widget drawerApp(BuildContext context) {
                 context, '/', (Route route) => false);
           },
         ),
-        ListTile(
-          leading: Image.asset(
-            'assets/logos/media.png',
-            width: 30,
+        ExpansionTile(
+          leading: const Icon(
+            Icons.calculate,
+            color: Colors.black,
           ),
           title: const Text('Media'),
-          onTap: () {
-            Navigator.pushNamedAndRemoveUntil(
-                context, 'media', (Route route) => false);
-          },
+          children: <Widget>[
+            ListTile(
+              leading: const Text(
+                'X̄',
+                textAlign: TextAlign.end,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              title: const Text('Media Aritmética'),
+              onTap: () {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'media', (Route route) => false);
+              },
+            ),
+            ListTile(
+              leading: const Text(
+                'M',
+                textAlign: TextAlign.end,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              title: const Text('Media Ponderada'),
+              onTap: () {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'mediaPonderada', (Route route) => false);
+              },
+            ),
+            ListTile(
+              leading: const Text(
+                '^M',
+                textAlign: TextAlign.end,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              title: const Text('Media Geométrica'),
+              onTap: () {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'mediaGeometrica', (Route route) => false);
+              },
+            ),
+          ],
         ),
         ExpansionTile(
           leading: Image.asset(
             'assets/logos/varianza.png',
-            width: 30,
+            width: 20,
             alignment: Alignment.centerLeft,
           ),
           title: const Text('Varianza'),
@@ -61,21 +107,23 @@ Widget drawerApp(BuildContext context) {
             ListTile(
               leading: Image.asset(
                 'assets/logos/varianza.png',
-                width: 30,
+                width: 15,
               ),
-              title: const Text('Varianza'),
+              title: const Text('Varianza Poblacional'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'varianza', (Route route) => false);
               },
             ),
             ListTile(
               leading: Image.asset(
                 'assets/logos/desviacionEstandar.png',
-                width: 25,
+                width: 15,
               ),
               title: const Text('Desviación Estándar'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'varianzaMuestral', (Route route) => false);
               },
             ),
           ],
@@ -89,7 +137,8 @@ Widget drawerApp(BuildContext context) {
           ),
           title: const Text('Mediana'),
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'mediana', (Route route) => false);
           },
         ),
         ListTile(
@@ -104,7 +153,8 @@ Widget drawerApp(BuildContext context) {
           ),
           title: const Text('Moda'),
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'moda', (Route route) => false);
           },
         ),
         ListTile(
@@ -119,8 +169,35 @@ Widget drawerApp(BuildContext context) {
           ),
           title: const Text('Cuartiles'),
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'cuartiles', (Route route) => false);
           },
+        ),
+        const SizedBox(height: 50),
+        const Divider(),
+        const SizedBox(height: 50),
+        ExpansionTile(
+          leading: const Icon(
+            Icons.group,
+            color: Colors.black,
+          ),
+          title: const Text('Team'),
+          children: [
+            ListTile(
+              title: const Text('Eswin Poroj'),
+              leading: const Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
+              onTap: () {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  'teamsEswinPoroj',
+                  (Route route) => false,
+                );
+              },
+            )
+          ],
         )
       ],
     ),
