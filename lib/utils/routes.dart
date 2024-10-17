@@ -5,7 +5,7 @@ import 'package:estadistica/screens/moda_screen.dart';
 import 'package:estadistica/screens/teams/team_eswin_poroj.dart';
 import '../screens/media/media_geometrica_screen.dart';
 import '../screens/media/media_ponderada_screen.dart';
-import '../screens/media_screen.dart';
+import '../screens/media/media_screen.dart';
 import '../screens/varianza/varianza_muestral_screen.dart';
 import '../screens/varianza/varianza_poblacional_screen.dart';
 

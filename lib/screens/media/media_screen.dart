@@ -57,7 +57,7 @@ class _MediaScreenState extends State<MediaScreen> {
         if (controller.text.isEmpty) {
           /// Muestro un mensaje de error
           mensaje('Todos los Campos Deben Estar Llenos', context);
-          throw Exception('Todos los Campos Deben Estar Llenos');
+          return;
         }
 
         /// De no estar vacío convierto el valor a double y lo agrego a la lista de numeros
@@ -86,7 +86,7 @@ class _MediaScreenState extends State<MediaScreen> {
               ),
             ),
             content: Text(
-              'La media de los numeros: \n${numeros.join(', ')}\n\nEs: $media',
+              'La media de los numeros: \n${numeros.join(', ')}\n\nEs: ${media.toStringAsFixed(2)}',
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 16,
