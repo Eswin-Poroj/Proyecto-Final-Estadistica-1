@@ -11,17 +11,19 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   void _goToGitHub() async {
+    const String url =
+        'https://github.com/Eswin-Poroj/Proyecto-Final-Estadistica-1';
     try {
-      const String url = '';
-      if (await canLaunchUrl(Uri.parse(url))) {
+      if (!await canLaunchUrl(Uri.parse(url))) {
         await launchUrl(
           Uri.parse(
             url,
           ),
+          mode: LaunchMode.externalApplication,
         );
       }
     } catch (e) {
-      print(e);
+      print('error: $e');
       throw Exception('No se pudo abrir el enlace');
     }
   }
@@ -31,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calculadora de Estadística'),
+        elevation: 20,
       ),
       drawer: drawerApp(context),
       backgroundColor: const Color(0xffd0dccb),

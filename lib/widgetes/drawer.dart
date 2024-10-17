@@ -33,9 +33,10 @@ Widget drawerApp(BuildContext context) {
             Icons.home,
             color: Colors.black,
           ),
-          title: const Text('Estadística'),
+          title: const Text('Inicio'),
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/', (Route route) => false);
           },
         ),
         ListTile(
@@ -45,7 +46,8 @@ Widget drawerApp(BuildContext context) {
           ),
           title: const Text('Media'),
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'media', (Route route) => false);
           },
         ),
         ExpansionTile(
