@@ -1,5 +1,6 @@
+import 'dart:math';
+import 'package:estadistica/widgetes/scaffold.dart';
 import 'package:flutter/material.dart';
-
 import '../../widgetes/drawer.dart';
 
 class VarianzaPoblacionalScreen extends StatefulWidget {
@@ -11,89 +12,163 @@ class VarianzaPoblacionalScreen extends StatefulWidget {
 }
 
 class _VarianzaPoblacionalScreenState extends State<VarianzaPoblacionalScreen> {
+  List<TextEditingController> controllers = [
+    TextEditingController(),
+  ];
+
+  @override
+  void dispose() {
+    for (var controller in controllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
+
+  void _addTextEditingController() {
+    setState(() {
+      controllers.add(TextEditingController());
+    });
+  }
+
+  void _deleteTextEditingController(int index) {
+    setState(() {
+      controllers.removeAt(index);
+    });
+  }
+
+  void calcularDesviacionEstandar() {
+    try {
+      List<double> datos = [];
+
+      for (var controller in controllers) {
+        if (controller.text.isEmpty) {
+          mensaje('Todos Los Campos Deben Estar Llenos', context);
+          return;
+        } else {
+          datos.add(double.parse(controller.text));
+        }
+      }
+
+      if (controllers.length < 2) {
+        mensaje('Debe Ingresar Al Menos Dos Datos', context);
+        return;
+      }
+
+      /// Calculo de la Media
+      double media = datos.reduce((a, b) => a + b) / datos.length;
+
+      /// Calculo de la Varianza
+      double varianza = datos
+              .map((e) => pow((e - media), 2).toDouble())
+              .reduce((a, b) => a + b) /
+          (datos.length);
+
+      /// Calculo de la Desviación Estandar
+      double desviacionEstandar = sqrt(varianza);
+
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Resultado'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'La Varianza es:',
+                ),
+                Text(
+                  varianza.toStringAsFixed(4),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'La Desviación Estandar Poblacional es:',
+                ),
+                Text(
+                  desviacionEstandar.toStringAsFixed(4),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    controllers.clear();
+                    controllers.add(TextEditingController());
+                  });
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Calcular Otros Datos'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Aceptar'),
+              ),
+            ],
+          );
+        },
+      );
+    } catch (e) {
+      mensaje('Error en Calcular La Varianza y Desviación Estandar', context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Varianza'),
+        title: const Text('Desviación Estándar Poblacional'),
         elevation: 20,
       ),
       drawer: drawerApp(context),
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              const Text(
-                'Varianza Poblacional',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+              for (var i = 0; i < controllers.length; i++)
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: TextField(
+                    controller: controllers[i],
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: 'Número ${i + 1}',
+                      border: const OutlineInputBorder(),
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          _deleteTextEditingController(i);
+                        },
+                      ),
+                    ),
+                  ),
                 ),
-              ),
               const SizedBox(height: 20),
-              const Text(
-                'La varianza es una medida de dispersión que se utiliza para saber cuánto se alejan los datos de la media. Es decir, nos indica la variabilidad de los datos respecto a la media. Cuanto mayor sea la varianza, mayor será la dispersión de los datos; y cuanto menor sea la varianza, menor será la dispersión de los datos.',
-                textAlign: TextAlign.justify,
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'La fórmula para calcular la varianza es:',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'Varianza = Σ (xi - x̄)² / n',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'Donde:',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'Σ = Sumatoria',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'xi = Valor de cada dato',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'x̄ = Media aritmética',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'n = Número total de datos',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'Para calcular la varianza, primero se calcula la media aritmética de los datos. Luego, se resta cada dato de la media y se eleva al cuadrado. Finalmente, se suman todos los resultados y se dividen entre el número total de datos.',
-                textAlign: TextAlign.justify,
+              ElevatedButton(
+                onPressed: () {
+                  calcularDesviacionEstandar();
+                },
+                child: const Text('Calcular Varianza y Desviación Estandar'),
               ),
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _addTextEditingController();
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

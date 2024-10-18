@@ -125,7 +125,7 @@ Widget drawerApp(BuildContext context) {
                 'assets/logos/varianza.png',
                 width: 15,
               ),
-              title: const Text('Varianza Poblacional'),
+              title: const Text('Varianza y Desviación Estándar (Poblacional)'),
               onTap: () {
                 Navigator.pushNamedAndRemoveUntil(
                     context, 'varianza', (Route route) => false);
@@ -136,7 +136,7 @@ Widget drawerApp(BuildContext context) {
                 'assets/logos/desviacionEstandar.png',
                 width: 15,
               ),
-              title: const Text('Desviación Estándar'),
+              title: const Text('Varianza y Desviación Estándar (Muestral)'),
               onTap: () {
                 Navigator.pushNamedAndRemoveUntil(
                     context, 'varianzaMuestral', (Route route) => false);

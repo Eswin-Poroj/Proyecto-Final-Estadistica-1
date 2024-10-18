@@ -123,7 +123,7 @@ class _MediaScreenState extends State<MediaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calcular Media'),
+        title: const Text('Media Aritmética'),
         elevation: 20,
       ),
       drawer: drawerApp(context),
