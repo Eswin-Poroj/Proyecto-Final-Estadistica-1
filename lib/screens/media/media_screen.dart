@@ -86,7 +86,7 @@ class _MediaScreenState extends State<MediaScreen> {
               ),
             ),
             content: Text(
-              'La media de los numeros: \n${numeros.join(', ')}\n\nEs: ${media.toStringAsFixed(2)}',
+              'La media de los numeros: \n${numeros.join(', ')}\n\nEs: ${media.toStringAsFixed(4)}',
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 16,
@@ -142,7 +142,7 @@ class _MediaScreenState extends State<MediaScreen> {
                       labelText: 'Número ${i + 1}',
                       border: const OutlineInputBorder(),
                       suffixIcon: IconButton(
-                        icon: const Icon(Icons.clear),
+                        icon: const Icon(Icons.delete),
                         onPressed: () => _deleteTextField(i),
                       ),
                     ),

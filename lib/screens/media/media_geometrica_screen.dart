@@ -68,7 +68,7 @@ class _MediaGeometricaScreenState extends State<MediaGeometricaScreen> {
           return AlertDialog(
             title: const Text('Resultado'),
             content: Text(
-              'La media Geométrica de: \n${numeros.join(', ')} \n\nEs: ${resultadoMediaGeometrica.toStringAsFixed(2)}',
+              'La media Geométrica de: \n${numeros.join(', ')} \n\nEs: ${resultadoMediaGeometrica.toStringAsFixed(4)}',
             ),
             actions: [
               TextButton(
@@ -81,7 +81,7 @@ class _MediaGeometricaScreenState extends State<MediaGeometricaScreen> {
                     controller.clear();
                   }
                 },
-                child: const Text('Calcular\nNuevamente'),
+                child: const Text('Calcular\nOtros Datos'),
               ),
               TextButton(
                 onPressed: () {
@@ -125,7 +125,7 @@ class _MediaGeometricaScreenState extends State<MediaGeometricaScreen> {
                         onPressed: () {
                           _deleteTextField(i);
                         },
-                        icon: const Icon(Icons.clear),
+                        icon: const Icon(Icons.delete),
                       ),
                     ),
                     keyboardType: TextInputType.number,

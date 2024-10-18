@@ -1,5 +1,6 @@
 import 'package:estadistica/screens/cuartiles_screen.dart';
 import 'package:estadistica/screens/home_screen.dart';
+import 'package:estadistica/screens/media/media_armonizada_screen.dart';
 import 'package:estadistica/screens/mediana_screen.dart';
 import 'package:estadistica/screens/moda_screen.dart';
 import 'package:estadistica/screens/teams/team_eswin_poroj.dart';
@@ -16,6 +17,7 @@ final routes = {
   'media': (context) => const MediaScreen(),
   'mediaGeometrica': (context) => const MediaGeometricaScreen(),
   'mediaPonderada': (context) => const MediaPonderadaScreen(),
+  'mediaArmonizada': (context) => const MediaArmonizadaScreen(),
 
   /// Rutas de la Varianza
   'varianza': (context) => const VarianzaPoblacionalScreen(),

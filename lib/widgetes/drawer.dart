@@ -94,6 +94,22 @@ Widget drawerApp(BuildContext context) {
                     context, 'mediaGeometrica', (Route route) => false);
               },
             ),
+            ListTile(
+              leading: const Text(
+                'A',
+                textAlign: TextAlign.end,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              title: const Text('Media Armonizada'),
+              onTap: () {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'mediaArmonizada', (Route route) => false);
+              },
+            )
           ],
         ),
         ExpansionTile(

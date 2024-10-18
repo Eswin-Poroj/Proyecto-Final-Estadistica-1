@@ -109,7 +109,8 @@ class _MediaPonderadaScreenState extends State<MediaPonderadaScreen> {
           return AlertDialog(
             title: const Text('Media Ponderada'),
             content: Text(
-                'La Media Ponderada de los numeros:\n\nValor:\n${numeros.join(', ')}\n\nPesos:\n${pesos.join(', ')}\n\nEs de: ${mediaPonderada.toStringAsFixed(2)}'),
+              'La Media Ponderada de los numeros:\n\nValor:\n${numeros.join(', ')}\n\nPesos:\n${pesos.join(', ')}\n\nEs de: ${mediaPonderada.toStringAsFixed(4)}',
+            ),
             actions: [
               TextButton(
                 onPressed: () {
@@ -119,7 +120,7 @@ class _MediaPonderadaScreenState extends State<MediaPonderadaScreen> {
                     (Route route) => false,
                   );
                 },
-                child: const Text('Calcular\nNuevamente'),
+                child: const Text('Calcular\nOtros Datos'),
               ),
               TextButton(
                 onPressed: () {
