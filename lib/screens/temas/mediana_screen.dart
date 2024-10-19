@@ -1,7 +1,7 @@
 import 'package:estadistica/widgetes/scaffold.dart';
 import 'package:flutter/material.dart';
 
-import '../widgetes/drawer.dart';
+import '../../widgetes/drawer.dart';
 
 class MedianaScreen extends StatefulWidget {
   const MedianaScreen({super.key});

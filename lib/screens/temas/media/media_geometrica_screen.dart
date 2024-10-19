@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../widgetes/drawer.dart';
-import '../../widgetes/scaffold.dart';
+import '../../../widgetes/drawer.dart';
+import '../../../widgetes/scaffold.dart';
 
 class MediaGeometricaScreen extends StatefulWidget {
   const MediaGeometricaScreen({super.key});

@@ -1,16 +1,16 @@
-import 'dart:math';
 import 'package:estadistica/widgetes/scaffold.dart';
 import 'package:flutter/material.dart';
+
 import '../../widgetes/drawer.dart';
 
-class VarianzaMuestralScreen extends StatefulWidget {
-  const VarianzaMuestralScreen({super.key});
+class CuartilesScreen extends StatefulWidget {
+  const CuartilesScreen({super.key});
 
   @override
-  State<VarianzaMuestralScreen> createState() => _VarianzaMuestralScreenState();
+  State<CuartilesScreen> createState() => _CuartilesScreenState();
 }
 
-class _VarianzaMuestralScreenState extends State<VarianzaMuestralScreen> {
+class _CuartilesScreenState extends State<CuartilesScreen> {
   List<TextEditingController> controllers = [
     TextEditingController(),
   ];
@@ -23,47 +23,39 @@ class _VarianzaMuestralScreenState extends State<VarianzaMuestralScreen> {
     super.dispose();
   }
 
-  void _addTextEditingController() {
+  void _addTextField() {
     setState(() {
       controllers.add(TextEditingController());
     });
   }
 
-  void _deleteTextEditingController(int index) {
+  void _removeTextField() {
     setState(() {
-      controllers.removeAt(index);
+      if (controllers.length > 1) {
+        controllers.removeLast();
+      }
     });
   }
 
-  void calcularDesviacionEstandar() {
+  void calcularCuartiles() {
     try {
       List<double> datos = [];
 
-      for (var controller in controllers) {
-        if (controller.text.isEmpty) {
+      for (var dato in controllers) {
+        if (dato.text.isEmpty) {
           mensaje('Todos Los Campos Deben Estar Llenos', context);
           return;
-        } else {
-          datos.add(double.parse(controller.text));
         }
+        datos.add(double.parse(dato.text));
       }
 
-      if (controllers.length < 2) {
-        mensaje('Debe Ingresar Al Menos Dos Datos', context);
-        return;
-      }
+      datos.sort();
 
-      /// Calculo de la Media
-      double media = datos.reduce((a, b) => a + b) / datos.length;
+      int n = datos.length;
 
-      /// Calculo de la Varianza
-      double varianza = datos
-              .map((e) => pow((e - media), 2).toDouble())
-              .reduce((a, b) => a + b) /
-          (datos.length - 1);
-
-      /// Calculo de la Desviación Estandar
-      double desviacionEstandar = sqrt(varianza);
+      double q1 = (n + 1) / 4;
+      double q2 = (n + 1) / 2;
+      double q3 = (3 * (n + 1)) / 4;
 
       showDialog(
         context: context,
@@ -73,25 +65,36 @@ class _VarianzaMuestralScreenState extends State<VarianzaMuestralScreen> {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                Text('De los Numeros Ingresados:'),
                 Text(
-                  'La Varianza es:',
-                ),
-                Text(
-                  varianza.toStringAsFixed(4),
+                  datos.join(', ').toString(),
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 10),
+                Text('El Cuartil 1 es:'),
                 Text(
-                  'La Desviación Estandar Muestral es:',
-                ),
-                Text(
-                  desviacionEstandar.toStringAsFixed(4),
-                  style: TextStyle(
+                  q1.toString(),
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
-                )
+                ),
+                Text('El Cuartil 2 es:'),
+                Text(
+                  q2.toString(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text('El Cuartil 3 es:'),
+                Text(
+                  q3.toString(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             actions: [
@@ -103,20 +106,21 @@ class _VarianzaMuestralScreenState extends State<VarianzaMuestralScreen> {
                   });
                   Navigator.of(context).pop();
                 },
-                child: const Text('Calcular Otros Datos'),
+                child: const Text('Calcular Nuevos Datos'),
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.of(context).pop();
                 },
                 child: const Text('Aceptar'),
-              ),
+              )
             ],
           );
         },
       );
     } catch (e) {
-      mensaje('Error en Calcular La Varianza y Desvuación Estandar', context);
+      print('error: $e');
+      mensaje('Error No Se Pudo Calcular Los Cuartiles', context);
     }
   }
 
@@ -124,7 +128,7 @@ class _VarianzaMuestralScreenState extends State<VarianzaMuestralScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Desviación Estándar'),
+        title: const Text('Cuartiles'),
         elevation: 20,
       ),
       drawer: drawerApp(context),
@@ -136,17 +140,17 @@ class _VarianzaMuestralScreenState extends State<VarianzaMuestralScreen> {
             children: [
               for (var i = 0; i < controllers.length; i++)
                 Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(10.0),
                   child: TextField(
                     controller: controllers[i],
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: 'Número ${i + 1}',
+                      labelText: 'Numero ${i + 1}',
                       border: const OutlineInputBorder(),
                       suffixIcon: IconButton(
                         icon: const Icon(Icons.delete),
                         onPressed: () {
-                          _deleteTextEditingController(i);
+                          _removeTextField();
                         },
                       ),
                     ),
@@ -155,9 +159,9 @@ class _VarianzaMuestralScreenState extends State<VarianzaMuestralScreen> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  calcularDesviacionEstandar();
+                  calcularCuartiles();
                 },
-                child: const Text('Calcular Varianza y Desviación Estandar'),
+                child: const Text('Calcular Cuartiles'),
               ),
             ],
           ),
@@ -165,7 +169,7 @@ class _VarianzaMuestralScreenState extends State<VarianzaMuestralScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _addTextEditingController();
+          _addTextField();
         },
         child: const Icon(Icons.add),
       ),

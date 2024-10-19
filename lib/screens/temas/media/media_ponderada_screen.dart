@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../widgetes/drawer.dart';
-import '../../widgetes/scaffold.dart';
+import '../../../widgetes/drawer.dart';
+import '../../../widgetes/scaffold.dart';
 
 class MediaPonderadaScreen extends StatefulWidget {
   const MediaPonderadaScreen({super.key});

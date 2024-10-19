@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:estadistica/widgetes/scaffold.dart';
 import 'package:flutter/material.dart';
-import '../../widgetes/drawer.dart';
+import '../../../widgetes/drawer.dart';
 
 class VarianzaPoblacionalScreen extends StatefulWidget {
   const VarianzaPoblacionalScreen({super.key});

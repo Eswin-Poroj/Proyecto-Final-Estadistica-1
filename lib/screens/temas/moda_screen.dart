@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../widgetes/drawer.dart';
-import '../widgetes/scaffold.dart';
+import '../../widgetes/drawer.dart';
+import '../../widgetes/scaffold.dart';
 
 class ModaScreen extends StatefulWidget {
   const ModaScreen({super.key});
