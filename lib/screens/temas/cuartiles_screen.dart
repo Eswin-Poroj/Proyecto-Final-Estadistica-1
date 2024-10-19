@@ -49,6 +49,16 @@ class _CuartilesScreenState extends State<CuartilesScreen> {
         datos.add(double.parse(dato.text));
       }
 
+      if (datos.length < 2) {
+        mensaje('Debes Ingresar Al Menos 2 Datos', context);
+        return;
+      }
+
+      if (datos.contains(0.0)) {
+        mensaje('No se permiten ceros', context);
+        return;
+      }
+
       datos.sort();
 
       int n = datos.length;

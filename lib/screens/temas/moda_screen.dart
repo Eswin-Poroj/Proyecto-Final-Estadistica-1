@@ -52,6 +52,11 @@ class _ModaScreenState extends State<ModaScreen> {
         return;
       }
 
+      if (numeros.contains(0.0)) {
+        mensaje('No se permiten ceros', context);
+        return;
+      }
+
       numeros.sort();
 
       int contador = 0;
@@ -167,7 +172,7 @@ class _ModaScreenState extends State<ModaScreen> {
                     ),
                   ),
                 ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   calcularModa();

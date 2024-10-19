@@ -53,6 +53,11 @@ class _MediaGeometricaScreenState extends State<MediaGeometricaScreen> {
         return;
       }
 
+      if (numeros.length < 2) {
+        mensaje('Debes Ingresar Al Menos 2 Datos', context);
+        return;
+      }
+
       double media = 1;
       for (var numero in numeros) {
         media *= numero;
@@ -115,7 +120,7 @@ class _MediaGeometricaScreenState extends State<MediaGeometricaScreen> {
             children: [
               for (var i = 0; i < controller1.length; i++)
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: TextField(
                     controller: controller1[i],
                     decoration: InputDecoration(
@@ -131,7 +136,7 @@ class _MediaGeometricaScreenState extends State<MediaGeometricaScreen> {
                     keyboardType: TextInputType.number,
                   ),
                 ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   calcularMediaGeometrica();

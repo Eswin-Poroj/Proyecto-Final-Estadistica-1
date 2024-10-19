@@ -64,6 +64,20 @@ class _MediaScreenState extends State<MediaScreen> {
         numeros.add(double.parse(controller.text));
       }
 
+      /// Verifico si la lista de numeros contiene ceros
+      if (numeros.contains(0.0)) {
+        /// Muestro un mensaje de error
+        mensaje('No se permiten ceros', context);
+        return;
+      }
+
+      /// Verifico si la lista de numeros contiene menos de 2 elementos
+      if (numeros.length < 2) {
+        /// Muestro un mensaje de error
+        mensaje('Debes Ingresar Al Menos 2 Datos', context);
+        return;
+      }
+
       /// Sumo los valores de la lista de numeros
       /// La función reduce() recibe una función que se ejecuta por cada elemento de la lista
       /// y recibe dos parametros, el primero es el valor acumulado y el segundo es el valor actual
@@ -149,11 +163,12 @@ class _MediaScreenState extends State<MediaScreen> {
                     keyboardType: TextInputType.number,
                   ),
                 ),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   calcularMedia();
                 },
-                child: const Text('Calcular Media'),
+                child: const Text('Calcular Media Aritmética'),
               ),
             ],
           ),

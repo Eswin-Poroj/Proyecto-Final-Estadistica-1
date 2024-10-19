@@ -87,6 +87,16 @@ class _MediaPonderadaScreenState extends State<MediaPonderadaScreen> {
         }
       }
 
+      if (numeros.contains(0.0)) {
+        mensaje('No se permiten ceros', context);
+        return;
+      }
+
+      if (numeros.length < 2 || pesos.length < 2) {
+        mensaje('Debes Ingresar Al Menos 2 Datos', context);
+        return;
+      }
+
       /// Recorro la lista de controladores donde se alojan los numeros ingresados por el usuario
       for (var i = 0; i < controller1.length; i++) {
         /// Agrego el resultado de la multiplicación de los numeros ingresados por el usuario
@@ -157,7 +167,7 @@ class _MediaPonderadaScreenState extends State<MediaPonderadaScreen> {
             children: [
               for (var i = 0; i < controller1.length; i++)
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -193,12 +203,12 @@ class _MediaPonderadaScreenState extends State<MediaPonderadaScreen> {
                     ],
                   ),
                 ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   calcularMedia();
                 },
-                child: const Text('Calcular'),
+                child: const Text('Calcular Media Ponderada'),
               ),
             ],
           ),

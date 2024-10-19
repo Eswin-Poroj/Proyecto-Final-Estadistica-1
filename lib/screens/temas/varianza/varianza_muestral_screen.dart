@@ -53,6 +53,11 @@ class _VarianzaMuestralScreenState extends State<VarianzaMuestralScreen> {
         return;
       }
 
+      if (datos.contains(0.0)) {
+        mensaje('No se permiten ceros', context);
+        return;
+      }
+
       /// Calculo de la Media
       double media = datos.reduce((a, b) => a + b) / datos.length;
 
@@ -136,7 +141,7 @@ class _VarianzaMuestralScreenState extends State<VarianzaMuestralScreen> {
             children: [
               for (var i = 0; i < controllers.length; i++)
                 Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(10),
                   child: TextField(
                     controller: controllers[i],
                     keyboardType: TextInputType.number,

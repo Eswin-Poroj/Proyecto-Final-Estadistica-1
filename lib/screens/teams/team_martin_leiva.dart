@@ -1,27 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../../widgetes/drawer.dart';
 
 class TeamMartinLeiva extends StatelessWidget {
   const TeamMartinLeiva({super.key});
-
-  void _goToGitHub() async {
-    const String url = 'https://github.com/Eswin-Poroj';
-    try {
-      if (!await canLaunchUrl(Uri.parse(url))) {
-        await launchUrl(
-          Uri.parse(
-            url,
-          ),
-          mode: LaunchMode.externalApplication,
-        );
-      }
-    } catch (e) {
-      print('error: $e');
-      throw Exception('No se pudo abrir el enlace');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,22 +64,6 @@ class TeamMartinLeiva extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  _goToGitHub();
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(10),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset('assets/logos/github.png', width: 30),
-                    const SizedBox(width: 25),
-                    const Text('IR A GITHUB'),
-                  ],
-                ),
-              ),
             ],
           ),
         ),

@@ -47,6 +47,16 @@ class _MediaArmonizadaScreenState extends State<MediaArmonizadaScreen> {
         }
       }
 
+      if (datos.length < 2) {
+        mensaje('Debes Ingresar Al Menos 2 Datos', context);
+        return;
+      }
+
+      if (datos.contains(0.0)) {
+        mensaje('No se permiten ceros', context);
+        return;
+      }
+
       double suma = 0;
       for (var numero in datos) {
         suma += 1 / numero;
@@ -98,7 +108,7 @@ class _MediaArmonizadaScreenState extends State<MediaArmonizadaScreen> {
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               for (var i = 0; i < controllers.length; i++)
@@ -119,7 +129,7 @@ class _MediaArmonizadaScreenState extends State<MediaArmonizadaScreen> {
                     ),
                   ),
                 ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   calcularMediaArmonizada();

@@ -52,6 +52,11 @@ class _MedianaScreenState extends State<MedianaScreen> {
         return;
       }
 
+      if (numeros.contains(0.0)) {
+        mensaje('No se permiten ceros', context);
+        return;
+      }
+
       /// Ordana los numeros ingresados de forma acendente
       /// Metodo de Dart
 
