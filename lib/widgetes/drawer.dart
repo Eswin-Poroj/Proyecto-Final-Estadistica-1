@@ -48,7 +48,7 @@ Widget drawerApp(BuildContext context) {
           children: <Widget>[
             ListTile(
               leading: const Text(
-                'X̄',
+                'A',
                 textAlign: TextAlign.end,
                 style: TextStyle(
                   fontSize: 25,
@@ -80,7 +80,7 @@ Widget drawerApp(BuildContext context) {
             ),
             ListTile(
               leading: const Text(
-                '^M',
+                'G',
                 textAlign: TextAlign.end,
                 style: TextStyle(
                   fontSize: 25,
@@ -96,7 +96,7 @@ Widget drawerApp(BuildContext context) {
             ),
             ListTile(
               leading: const Text(
-                'A',
+                'Me',
                 textAlign: TextAlign.end,
                 style: TextStyle(
                   fontSize: 25,
@@ -113,10 +113,9 @@ Widget drawerApp(BuildContext context) {
           ],
         ),
         ExpansionTile(
-          leading: Image.asset(
-            'assets/logos/varianza.png',
-            width: 20,
-            alignment: Alignment.centerLeft,
+          leading: const Icon(
+            Icons.calculate,
+            color: Colors.black,
           ),
           title: const Text('Varianza'),
           children: <Widget>[
@@ -133,7 +132,7 @@ Widget drawerApp(BuildContext context) {
             ),
             ListTile(
               leading: Image.asset(
-                'assets/logos/desviacionEstandar.png',
+                'assets/logos/varianza.png',
                 width: 15,
               ),
               title: const Text('Varianza y Desviación Estándar (Muestral)'),
@@ -145,11 +144,9 @@ Widget drawerApp(BuildContext context) {
           ],
         ),
         ListTile(
-          leading: const Text(
-            'M',
-            textAlign: TextAlign.end,
-            style: TextStyle(
-                fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
+          leading: const Icon(
+            Icons.calculate,
+            color: Colors.black,
           ),
           title: const Text('Mediana'),
           onTap: () {
@@ -158,14 +155,9 @@ Widget drawerApp(BuildContext context) {
           },
         ),
         ListTile(
-          leading: const Text(
-            '^M',
-            textAlign: TextAlign.end,
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+          leading: const Icon(
+            Icons.calculate,
+            color: Colors.black,
           ),
           title: const Text('Moda'),
           onTap: () {
@@ -174,14 +166,9 @@ Widget drawerApp(BuildContext context) {
           },
         ),
         ListTile(
-          leading: const Text(
-            'C',
-            textAlign: TextAlign.end,
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+          leading: const Icon(
+            Icons.calculate,
+            color: Colors.black,
           ),
           title: const Text('Cuartiles'),
           onTap: () {
@@ -189,8 +176,6 @@ Widget drawerApp(BuildContext context) {
                 context, 'cuartiles', (Route route) => false);
           },
         ),
-        const SizedBox(height: 50),
-        const Divider(),
         const SizedBox(height: 50),
         ExpansionTile(
           leading: const Icon(
@@ -209,6 +194,20 @@ Widget drawerApp(BuildContext context) {
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   'teamsEswinPoroj',
+                  (Route route) => false,
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Martín Leiva'),
+              leading: const Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
+              onTap: () {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  'teamsMartinLeiva',
                   (Route route) => false,
                 );
               },

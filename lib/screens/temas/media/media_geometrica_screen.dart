@@ -45,7 +45,7 @@ class _MediaGeometricaScreenState extends State<MediaGeometricaScreen> {
           mensaje('Todos los Campos Deben Estar Llenos', context);
           return;
         }
-        numeros.add(double.tryParse(controller.text) ?? 0.0);
+        numeros.add(double.parse(controller.text));
       }
 
       if (numeros.contains(0.0)) {

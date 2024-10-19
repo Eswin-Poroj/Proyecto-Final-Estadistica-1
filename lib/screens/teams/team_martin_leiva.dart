@@ -3,8 +3,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgetes/drawer.dart';
 
-class TeamEswinPoroj extends StatelessWidget {
-  const TeamEswinPoroj({super.key});
+class TeamMartinLeiva extends StatelessWidget {
+  const TeamMartinLeiva({super.key});
 
   void _goToGitHub() async {
     const String url = 'https://github.com/Eswin-Poroj';
@@ -38,7 +38,7 @@ class TeamEswinPoroj extends StatelessWidget {
           child: Column(
             children: [
               const Text(
-                'Eswin Poroj',
+                'Martin Leiva',
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -48,7 +48,7 @@ class TeamEswinPoroj extends StatelessWidget {
               CircleAvatar(
                 radius: 100,
                 backgroundImage: const AssetImage(
-                  'assets/team/fotoEswin.jpg',
+                  'assets/team/fotoMartin.jpg',
                 ),
               ),
               const SizedBox(height: 20),
@@ -61,7 +61,7 @@ class TeamEswinPoroj extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  const Text('Eswin Stuard Poroj Castro'),
+                  const Text('Martin Antonio Leiva Gómez'),
                 ],
               ),
               const SizedBox(height: 10),
@@ -74,17 +74,12 @@ class TeamEswinPoroj extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  const Text('1490 - 23 - 22603'),
+                  const Text('1490 - 23 - 23158'),
                 ],
               ),
               const SizedBox(height: 20),
               const Text(
-                'Estudiante de la Universidad de Mariano Gálvez De Guatemala, Facultad de Ingeniería en Sistemas, actualmente cursando el 2do año de la carrera. Me considero una persona responsable, proactiva, con deseos de superación y aprendizaje constante. Me gusta trabajar en equipo y aportar ideas que ayuden a mejorar el trabajo en conjunto. Me gusta la programación y el desarrollo de software, siempre busco mejorar mis habilidades y conocimientos en el área de la tecnología.',
-                textAlign: TextAlign.justify,
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'Soy un apasionado estudiante de Ingeniería en Sistemas, enamorado de la tecnología y todo lo que se puede lograr con ella. Me encanta crear soluciones innovadoras a través del desarrollo de sistemas. Mi objetivo es mejorar constantemente mis habilidades y contribuir al mundo de la tecnología con ideas que hagan la vida más fácil y eficiente.',
+                'Le interesa todo lo que tenga que ver con tecnología, su experiencia en el campo de la electronica y la electricidad, despertaron su interés en las ciencias informáticas para poder complementar y mejorar sus habilidades. Desea conocer cómo poder comunicarse e interactuar con dispositivos inteligentes para poder aprovechar al máximo esos recursos. Su interés primordial es la aplicación de los dispositivos inteligentes en el campo de la medicina, especialmente en el area de imágenes de diagnostico e instrumentación para procedimientos quirúrgicos. Siempre tiene presente que todos los días se aprende algo nuevo y que nunca es tarde para empezar en un campo tan apasionante como lo es Ingeniería en Ciencias de la Computación e Informatica.',
                 textAlign: TextAlign.justify,
               ),
               const SizedBox(height: 20),

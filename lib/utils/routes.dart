@@ -4,6 +4,7 @@ import 'package:estadistica/screens/temas/media/media_armonizada_screen.dart';
 import 'package:estadistica/screens/temas/mediana_screen.dart';
 import 'package:estadistica/screens/temas/moda_screen.dart';
 import 'package:estadistica/screens/teams/team_eswin_poroj.dart';
+import '../screens/teams/team_martin_leiva.dart';
 import '../screens/temas/media/media_geometrica_screen.dart';
 import '../screens/temas/media/media_ponderada_screen.dart';
 import '../screens/temas/media/media_screen.dart';
@@ -34,4 +35,5 @@ final routes = {
 
   /// Rutas del Teams
   'teamsEswinPoroj': (context) => const TeamEswinPoroj(),
+  'teamsMartinLeiva': (context) => const TeamMartinLeiva(),
 };

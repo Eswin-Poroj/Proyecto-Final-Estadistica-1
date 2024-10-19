@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 30),
               const Text(
-                'Esta Aplicación Fue Hecha Por: \n- Eswin Stuard Poroj Castro\n- Martín Leiva',
+                'Esta Aplicación Fue Hecha Por: \n- Eswin Stuard Poroj Castro\n- Martin Antonio Leiva Gómez',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
